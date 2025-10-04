@@ -9,4 +9,26 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>CompanyFrontController</servlet-name>
+  	<servlet-class>com.app.company.CompanyFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>CompanyFrontController</servlet-name>
+  	<url-pattern>*.company</url-pattern>
+  </servlet-mapping>
+  
+  
+   	<servlet>
+ 		<servlet-name>main</servlet-name>
+ 		<jsp-file>/main.jsp</jsp-file>
+  	</servlet>
+  	
+  	<servlet-mapping>
+  		<servlet-name>main</servlet-name>
+  		<url-pattern>/</url-pattern>
+  	</servlet-mapping>
+
 </web-app>
