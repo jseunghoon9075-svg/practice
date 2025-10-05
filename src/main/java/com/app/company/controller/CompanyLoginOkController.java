@@ -28,7 +28,7 @@ public class CompanyLoginOkController implements Action {
 		companyVO.setCompanyName(companyName);
 		companyVO.setCompanyPassword(companyPassword);
 		
-		String foundCompany = companyDAO.select(companyVO);
+		CompanyVO foundCompany = companyDAO.select(companyVO);
 		
 //		로그인 실패
 		result.setRedirect(true);

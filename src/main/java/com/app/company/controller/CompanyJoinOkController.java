@@ -33,7 +33,7 @@ public class CompanyJoinOkController implements Action {
 		companyDAO.insert(companyVO);
 		
 		result.setRedirect(true);
-		result.setPath("/practice/company.jsp");
+		result.setPath("/practice");
 		return result;
 	}
 

@@ -12,13 +12,18 @@ public class CompanyDAO {
 	public CompanyDAO() {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
+//	기업 회원가입
 	public void insert(CompanyVO companyVO) {
 		sqlSession.insert("company.insert", companyVO);
 	}
 	
-//	로그인
-	public String select(CompanyVO companyVO) {
+//	기업 로그인
+	public CompanyVO select(CompanyVO companyVO) {
 		return sqlSession.selectOne("company.select", companyVO);
+	}
+	
+	public Long findIdByCompanyName(CompanyVO companyVO) {
+		return sqlSession.selectOne("company.selectIdByCompanyName", companyVO);
 	}
 }
 

@@ -1,4 +1,4 @@
-package com.app.company;
+package com.app.user;
 
 import java.io.IOException;
 
@@ -8,13 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.app.Result;
-import com.app.company.controller.CompanyJoinController;
-import com.app.company.controller.CompanyJoinOkController;
-import com.app.company.controller.CompanyLoginController;
-import com.app.company.controller.CompanyLoginOkController;
-import com.app.company.controller.CompanyLogoutOkController;
+import com.app.user.controller.UserJoinController;
+import com.app.user.controller.UserJoinOkController;
+import com.app.user.controller.UserLoginController;
+import com.app.user.controller.UserLoginOkController;
+import com.app.user.controller.UserLogoutOkController;
 
-public class CompanyFrontController extends HttpServlet{
+public class UserFrontController extends HttpServlet{
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -27,19 +28,20 @@ public class CompanyFrontController extends HttpServlet{
 		System.out.println(target);
 		
 		if(target.equals("join")) {
-			result = new CompanyJoinController().execute(req, resp);
+			result = new UserJoinController().execute(req, resp);
 		}else if(target.equals("join-ok")) {
-			result = new CompanyJoinOkController().execute(req, resp);
+			result = new UserJoinOkController().execute(req, resp);
 		}else if(target.equals("login")) {
-			result = new CompanyLoginController().execute(req, resp);
+			result = new UserLoginController().execute(req, resp);
 		}else if(target.equals("login-ok")) {
-			result = new CompanyLoginOkController().execute(req, resp);
+			result = new UserLoginOkController().execute(req, resp);
 		}else if(target.equals("logout-ok")) {
-			result = new CompanyLogoutOkController().execute(req, resp);
+			result = new UserLogoutOkController().execute(req, resp);
 		}else {
 			
 		}
-	
+		
+		
 		if(result != null) {
 			if(result.isRedirect()) {
 				resp.sendRedirect(result.getPath());
@@ -47,6 +49,8 @@ public class CompanyFrontController extends HttpServlet{
 				req.getRequestDispatcher(result.getPath()).forward(req, resp);
 			}
 		}
+		
+		
 	}
 	
 	@Override

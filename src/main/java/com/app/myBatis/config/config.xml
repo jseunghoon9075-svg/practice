@@ -8,6 +8,11 @@
 		
 	<typeAliases>
 		<typeAlias type="com.app.vo.CompanyVO" alias="CompanyVO" />
+		<typeAlias type="com.app.vo.UserVO" alias="UserVO" />
+		<typeAlias type="com.app.vo.ProductVO" alias="ProductVO" />
+		<typeAlias type="com.app.vo.CardVO" alias="CardVO" />
+		<typeAlias type="com.app.vo.OrderVO" alias="OrderVO" />
+		<typeAlias type="com.app.dto.ProductDTO" alias="ProductDTO" />
 	</typeAliases>
 
 	<environments default="oracle">
@@ -25,6 +30,10 @@
 	<!-- 톰캣 모듈추가 -->
 	<mappers>
 		<mapper resource="com/app/myBatis/mapper/companyMapper.xml"/>
+		<mapper resource="com/app/myBatis/mapper/userMapper.xml"/>
+		<mapper resource="com/app/myBatis/mapper/productMapper.xml"/>
+		<mapper resource="com/app/myBatis/mapper/cardMapper.xml"/>
+		<mapper resource="com/app/myBatis/mapper/orderMapper.xml"/>
 	</mappers>
 	
 	

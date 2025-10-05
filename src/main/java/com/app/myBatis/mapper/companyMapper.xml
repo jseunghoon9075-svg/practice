@@ -6,12 +6,16 @@
 		INSERT INTO TBL_COMPANY
 		VALUES(SEQ_COMPANY.NEXTVAL, #{companyName}, #{companyPassword}, #{companyPhone}, #{companyAddress})
 	</insert>
-	<select id="select" parameterType="CompanyVO" resultType="String">
-		SELECT COMPANY_NAME AS companyName
+	<select id="select" parameterType="CompanyVO" resultType="CompanyVO">
+		SELECT ID AS id ,COMPANY_NAME AS companyName
 		FROM TBL_COMPANY
 		WHERE COMPANY_NAME = #{companyName} AND COMPANY_PASSWORD = #{companyPassword}
 	</select>
-
+		<select id="selectIdByCompanyName" parameterType="String" resultType="Long">
+		SELECT ID
+		FROM TBL_COMPANY
+		WHERE COMPANY_NAME = #{companyName}
+	</select>
 
 
 

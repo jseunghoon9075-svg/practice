@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="product">
+	<insert id="insert" parameterType="ProductVO">
+		INSERT INTO TBL_PRODUCT
+		VALUES(SEQ_PRODUCT.NEXTVAL, #{productName}, #{productPrice}, #{productStock}, #{companyId})
+	</insert>
+
+	<select id="select" parameterType="Long" resultType="ProductDTO">
+		SELECT 
+			TBP.ID, 
+			TBP.PRODUCT_NAME AS productName, 
+			TBP.PRODUCT_PRICE AS productPrice,
+			TBP.PRODUCT_STOCK AS productStock,
+			TBP.COMPANY_ID AS companyId,
+			TBC.COMPANY_NAME AS companyName,
+			TBC.COMPANY_PHONE AS companyPhone,
+			TBC.COMPANY_ADDRESS AS companyAddress
+		FROM TBL_PRODUCT TBP
+		JOIN TBL_COMPANY TBC
+		ON TBP.COMPANY_ID = TBC.ID
+		WHERE TBC.ID = #{companyId}
+	</select>
+	
+	<select id="selectAll" resultType="ProductDTO">
+		SELECT 
+			TBP.ID, 
+			TBP.PRODUCT_NAME AS productName, 
+			TBP.PRODUCT_PRICE AS productPrice,
+			TBP.PRODUCT_STOCK AS productStock,
+			TBP.COMPANY_ID AS companyId,
+			TBC.COMPANY_NAME AS companyName,
+			TBC.COMPANY_PHONE AS companyPhone,
+			TBC.COMPANY_ADDRESS AS companyAddress
+		FROM TBL_PRODUCT TBP
+		JOIN TBL_COMPANY TBC
+		ON TBP.COMPANY_ID = TBC.ID
+	</select>
+
+
+
+
+
+
+
+
+
+
+</mapper>

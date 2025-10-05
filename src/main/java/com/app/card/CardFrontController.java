@@ -1,4 +1,4 @@
-package com.app.company;
+package com.app.card;
 
 import java.io.IOException;
 
@@ -8,13 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.app.Result;
-import com.app.company.controller.CompanyJoinController;
-import com.app.company.controller.CompanyJoinOkController;
-import com.app.company.controller.CompanyLoginController;
-import com.app.company.controller.CompanyLoginOkController;
-import com.app.company.controller.CompanyLogoutOkController;
+import com.app.card.controller.CardAddController;
+import com.app.card.controller.CardAddOkController;
 
-public class CompanyFrontController extends HttpServlet{
+public class CardFrontController extends HttpServlet{
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -26,27 +24,24 @@ public class CompanyFrontController extends HttpServlet{
 		String target = req.getRequestURI().replace(req.getContextPath() + "/", "").split("\\.")[0];
 		System.out.println(target);
 		
-		if(target.equals("join")) {
-			result = new CompanyJoinController().execute(req, resp);
-		}else if(target.equals("join-ok")) {
-			result = new CompanyJoinOkController().execute(req, resp);
-		}else if(target.equals("login")) {
-			result = new CompanyLoginController().execute(req, resp);
-		}else if(target.equals("login-ok")) {
-			result = new CompanyLoginOkController().execute(req, resp);
-		}else if(target.equals("logout-ok")) {
-			result = new CompanyLogoutOkController().execute(req, resp);
-		}else {
+		if(target.equals("add")) {
+			result = new CardAddController().execute(req, resp);
+		}else if(target.equals("add-ok")) {
+			result = new CardAddOkController().execute(req, resp);
 			
 		}
-	
+		
+		
+		
 		if(result != null) {
 			if(result.isRedirect()) {
 				resp.sendRedirect(result.getPath());
-			}else {
+			} else {
 				req.getRequestDispatcher(result.getPath()).forward(req, resp);
 			}
 		}
+		
+		
 	}
 	
 	@Override
